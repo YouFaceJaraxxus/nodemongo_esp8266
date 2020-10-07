@@ -192,14 +192,20 @@ exp.post('/send-data', (req,res)=>{
             Settings.findOne({'userId':user._id},(err, settings)=>{
               if(err) console.log(err);
               else {
-                //console.log(settings);
-                statusMap.wntTmp = settings.wntTmp;
-                statusMap.wntHum = settings.wntHum;
-                statusMap.wntGHum= settings.wntGHum;
-                statusMap.aut = settings.aut;
-                if(settings.aut==0)statusMap.act = settings.act;
-                else statusMap.act = req.body.act;
-
+                if(settings){
+                  statusMap.wntTmp = settings.wntTmp;
+                  statusMap.wntHum = settings.wntHum;
+                  statusMap.wntGHum= settings.wntGHum;
+                  statusMap.aut = settings.aut;
+                  if(settings.aut==0)statusMap.act = settings.act;
+                  else statusMap.act = req.body.act;
+                }else{
+                  statusMap.wntTmp = 25;
+                  statusMap.wntHum = 60;
+                  statusMap.wntGHum= 40;
+                  statusMap.aut = 1;
+                  statusMap.act = req.body.act;
+                } 
                 Settings.update(
                   {userId:user._id},
                   {$set:{
