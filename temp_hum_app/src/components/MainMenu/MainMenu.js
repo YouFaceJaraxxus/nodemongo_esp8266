@@ -187,12 +187,12 @@ class MainMenu extends Component{
 
   componentDidMount(){
     this.getData(true);
-    const intervalNewData = setInterval(() => {
+    /*const intervalNewData = setInterval(() => {
       this.getNewData();
-    }, 5000);
-    const intervalAllData = setInterval(()=>{
+    }, 5000);*/
+    /*const intervalAllData = setInterval(()=>{
       this.getData(false);
-    }, 1800000)
+    }, 1800000)*/
   }
 
   mapAction = (recommendedDoorState, recommendedWaterState)=>{
