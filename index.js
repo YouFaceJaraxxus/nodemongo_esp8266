@@ -275,7 +275,7 @@ exp.post('/login', (req,res)=>{
   }
   else{
     User.findOne({'email':req.body.email}, (err,user)=>{
-      if(!user) res.json({
+      if(!user) res.status(400).json({
         auth:false,
         message: 'No user with that email.'
       })
