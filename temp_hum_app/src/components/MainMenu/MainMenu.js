@@ -188,9 +188,9 @@ class MainMenu extends Component{
 
   componentDidMount(){
     this.getData(true);
-    /*const intervalNewData = setInterval(() => {
+    const intervalNewData = setInterval(() => {
       this.getNewData();
-    }, 5000);*/
+    }, 30000);
     /*const intervalAllData = setInterval(()=>{
       this.getData(false);
     }, 1800000)*/
