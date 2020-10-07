@@ -1,0 +1,29 @@
+#mainWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mainForm{
+    margin-top: 5%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items:center;
+    background-color: rgb(197, 239, 255);
+    padding: 5%;
+    border-radius: 10px;
+}
+
+
+.loginLabel{
+    margin-bottom: 1%;
+}
+
+.loginInput{
+    margin-bottom: 4%;
+}
+
+.loginButton{
+    margin-top: 30%;
+}

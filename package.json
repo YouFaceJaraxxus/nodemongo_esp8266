@@ -1,0 +1,30 @@
+{
+  "name": "12_sec_and_auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm run start --prefix temp_hum_app",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false npm install --prefix temp_hum_app && npm run build --prefix temp_hum_app"
+  },
+  "engines": {
+    "node": "12.18.2"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.18.2",
+    "concurrently": "^5.3.0",
+    "cookie-parser": "^1.4.5",
+    "crypto-js": "^4.0.0",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.7"
+  }
+}
