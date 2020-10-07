@@ -322,7 +322,7 @@ exp.post('/logout', (req,res)=>{
 })
 
 if(process.env.NODE_ENV==='production'){
-  const path = requre('path');
+  const path = require('path');
   exp.get('/*',(req,res)=>{
     res.sendFile(path.resolve(__dirname, '../temp_hum_app', 'build', 'index.html'))
   })
