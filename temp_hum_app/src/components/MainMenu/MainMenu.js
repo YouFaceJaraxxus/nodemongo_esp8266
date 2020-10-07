@@ -79,10 +79,9 @@ class MainMenu extends Component{
         dataCopy.push(data[i]);
       }
       dataCopy.sort((a,b)=>{return a.counter-b.counter});
-      console.log('dataCopy', dataCopy);
+      let len = dataCopy.length-1;
       for(var i in dataCopy){
-        console.log('element', element);
-        let element = data[47-i];
+        let element = data[len-i];
         temperatures.push(element.tmp)
         humidities.push(element.hum)
         groundHumidities.push(element.gHum)
