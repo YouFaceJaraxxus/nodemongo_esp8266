@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const SALT = 10;
 const SECRET_KEY = process.env.SECRET;
 var gl=1;
-mongoose.connect('mongodb://localhost:27017/test')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://heroku_6x6wx931:1r3nid1jjuv7qvcbrivflvh216@ds135522.mlab.com:35522/heroku_6x6wx931')
 
 const userSchema = mongoose.Schema({
     email:{

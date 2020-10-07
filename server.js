@@ -9,7 +9,7 @@ let addedMap = new Map();
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://heroku_wndq90dm:42fs8ot8g6e05k8e7jo4t6mq56@ds237337.mlab.com:37337/heroku_wndq90dm')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://heroku_6x6wx931:1r3nid1jjuv7qvcbrivflvh216@ds135522.mlab.com:35522/heroku_6x6wx931')
 const exp = express();
 
 
