@@ -327,6 +327,10 @@ exp.post('/logout', (req,res)=>{
   })
 })
 
+exp.get('*', function(req, res){
+  res.status(200).redirect('https://boiling-depths-14789.herokuapp.com/');
+});
+
 if(process.env.NODE_ENV==='production'){
   const path = require('path');
   exp.get('/*',(req,res)=>{
