@@ -289,8 +289,8 @@ class MainMenu extends Component{
     wantedParam = parseInt(wantedParam);
     bottomDiff = parseInt(bottomDiff);
     topDiff = parseInt(topDiff);
-    if(param-wantedParam<bottomDiff) return {color:"#339EFF"};
-    else if(param-wantedParam>topDiff) return {color:"#FB3D13"};
+    if(param-wantedParam<=bottomDiff) return {color:"#339EFF"};
+    else if(param-wantedParam>=topDiff) return {color:"#FB3D13"};
     else return {color:"#4CFB13"};
   }
 
