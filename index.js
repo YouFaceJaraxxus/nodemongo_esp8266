@@ -73,7 +73,7 @@ exp.use(express.static('temp_hum_app/build'))
 
 
 exp.get('/get-data', (req,res)=>{
-  let token = req.cookies.auth;
+  let token = req.cookies.auth||req.body.auth;
   if(token){
     let statusMap = new Object();
     var statusMapData;
@@ -110,7 +110,7 @@ exp.get('/get-data', (req,res)=>{
 })
 
 exp.get('/get-data-new', (req,res)=>{
-  let token = req.cookies.auth;
+  let token = req.cookies.auth||req.body.auth;
   if(token){
     User.findByToken(token, (err,user)=>{
       if(err) throw err;
@@ -229,7 +229,7 @@ exp.post('/send-data', (req,res)=>{
 
 exp.post('/settings', (req,res)=>{
   //console.log('settings body', req.body);
-  let token = req.cookies.auth;
+  let token = req.cookies.auth||req.body.auth;
   if(token){
     User.findByToken(token, (err,user)=>{
       if(err) throw err;
@@ -258,7 +258,7 @@ exp.post('/settings', (req,res)=>{
 })
 
 exp.post('/login', (req,res)=>{
-  let token = req.cookies.auth;
+  let token = req.cookies.auth||req.body.auth;
   if(token){
     User.findByToken(token, (err,user)=>{
       if(err) throw err;
@@ -288,22 +288,29 @@ exp.post('/login', (req,res)=>{
           })
           else {
             user.generateToken((err, user)=>{
-              if(err) res.status(200).send(err);
-              res.cookie('auth', user.token).json({
-                auth:true,
-                message: 'Valid login, ' + user.email + '.'
-              })
+              if(err) res.status(400).send(err);
+              if(req.body.mobile){
+                res.status(200).json({
+                  auth:true,
+                  message: 'Valid login, ' + user.email + '.',
+                  auth: user.token
+                })
+              }else{
+                res.cookie('auth', user.token).json({
+                  auth:true,
+                  message: 'Valid login, ' + user.email + '.'
+                })
+              }
             })
           }
         })
       }
     })
   }
-  
 })
 
 exp.post('/logout', (req,res)=>{
-  let token = req.cookies.auth;
+  let token = req.cookies.auth||req.body.auth;
   //console.log("TOKEN", token);
 
   User.findByToken(token, (err,user)=>{
@@ -328,7 +335,7 @@ exp.post('/logout', (req,res)=>{
 })
 
 exp.get('*', function(req, res){
-  res.status(200).redirect('https://boiling-depths-14789.herokuapp.com/');
+  res.status(301).redirect('https://boiling-depths-14789.herokuapp.com/');
 });
 
 if(process.env.NODE_ENV==='production'){
