@@ -66,7 +66,7 @@ class MainMenu extends Component{
   }
 
   getData= (changeInputs)=>{
-    axios.get("/get-data")
+    axios.post("/data")
     .then(response=>{
       let data = response.data.data;
       let settings = response.data.settings
@@ -163,7 +163,7 @@ class MainMenu extends Component{
   }
 
   getNewData = ()=>{
-    axios.get("/get-data-new")
+    axios.post("/data-new")
     .then(response=>{
       let settings = response.data.settings;
       let data = response.data.data;

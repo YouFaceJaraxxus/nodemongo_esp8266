@@ -72,7 +72,7 @@ exp.use(express.static('temp_hum_app/build'))
   });*/
 
 
-exp.get('/get-data', (req,res)=>{
+exp.post('/data', (req,res)=>{
   let token = req.cookies.auth||req.body.auth;
   if(token){
     let statusMap = new Object();
@@ -109,7 +109,7 @@ exp.get('/get-data', (req,res)=>{
   })
 })
 
-exp.get('/get-data-new', (req,res)=>{
+exp.post('/data-new', (req,res)=>{
   let token = req.cookies.auth||req.body.auth;
   if(token){
     User.findByToken(token, (err,user)=>{
