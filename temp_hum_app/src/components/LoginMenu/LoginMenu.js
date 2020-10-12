@@ -8,7 +8,8 @@ import './LoginMenu.css';
 class LoginMenu extends Component {
     state = { 
         email:"",
-        password:""
+        password:"",
+        error : null
      }
 
      
@@ -30,10 +31,16 @@ class LoginMenu extends Component {
          axios.post("/login", data)
          .then(response=>{
              if(response.status==200){
+                 this.setState({
+                     error:null
+                 })
                 this.props.history.push('/data');
              }
          }).catch(err=>{
              console.log(err)
+             this.setState({
+                error: 'Invalid credentials.'
+             })
          })
      }
 
@@ -53,6 +60,8 @@ class LoginMenu extends Component {
                     <label className="loginLabel" for="password">Password:</label>
                     <input className="loginInput" placeholder="Password" type="password" name="password" value={this.state.password} onChange={this.handlePasswordChange}></input>
                     <button className="loginButton btn btn-primary btn-block" onClick={this.login}>Login</button>
+                    {this.state.error?
+                    <label className="loginErrorLabel">{this.state.error}</label>:null}
                 </form>
             </div>
             
